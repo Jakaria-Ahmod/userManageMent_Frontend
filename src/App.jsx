@@ -7,6 +7,7 @@ import ManeageUser from './pages/ManageUser';
 import { ToastContainer } from 'react-toastify';
 import UserView from './pages/userview';
 import UserEdite from './pages/userEdite';
+import RouteNotFound from './pages/not';
 function App() {
   const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ function App() {
         {
           path: '/user-edit/:id',
           element: <UserEdite></UserEdite>,
+        },
+        {
+          path: '*',
+          element: <RouteNotFound></RouteNotFound>,
         },
       ],
     },
