@@ -17,7 +17,6 @@ const Hedaer = () => {
                 <Link to="/">Home</Link>
                 <Link to="/sigup">sigup</Link>
                 <Link to="/login">login</Link>
-                <Link to="/manage-user">manage_user</Link>
               </ul>
             </div>
           </div>
