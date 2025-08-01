@@ -68,47 +68,53 @@ const ManageUser = () => {
               <th className="py-3 px-4 border-b text-center">Actions</th>
             </tr>
           </thead>
-          <tbody>
-            {user.length > 0 ? (
-              user.map((item, index) => (
-                <tr key={item._id} className="hover:bg-gray-50 transition">
-                  <td className="py-3 px-4 border-b">{index + 1}</td>
-                  <td className="py-3 px-4 border-b">{item?.name}</td>
-                  <td className="py-3 px-4 border-b">{item?.email}</td>
-                  <td className="py-3 px-4 border-b">
-                    {item?.password.substring(0, 5)}...
-                  </td>
-                  <td className="py-3 px-4 border-b text-center space-x-2">
-                    <Link
-                      to={`/user-view/${item?._id}`}
-                      className="bg-blue-500 text-white px-3 py-1 text-sm rounded hover:bg-blue-600"
-                    >
-                      View
-                    </Link>
-                    <Link
-                      to={`/user-edit/${item?._id}`}
-                      className="bg-yellow-500 text-white px-3 py-1 text-sm rounded hover:bg-yellow-600"
-                    >
-                      Edit
-                    </Link>
-                    <button
-                      onClick={() => handleDelete(item?._id)}
-                      className="bg-red-500 cursor-pointer text-white px-3 py-1 text-sm rounded hover:bg-red-600"
-                    >
-                      Delete
-                    </button>
+        </table>
+
+        {/* Scrollable tbody wrapper */}
+        <div className="h-[400px] overflow-y-auto">
+          <table className="min-w-full bg-white">
+            <tbody>
+              {user.length > 0 ? (
+                user.map((item, index) => (
+                  <tr key={item._id} className="hover:bg-gray-50 transition">
+                    <td className="py-3 px-4 border-b">{index + 1}</td>
+                    <td className="py-3 px-4 border-b">{item?.name}</td>
+                    <td className="py-3 px-4 border-b">{item?.email}</td>
+                    <td className="py-3 px-4 border-b">
+                      {item?.password.substring(0, 5)}...
+                    </td>
+                    <td className="py-3 px-4 border-b text-center space-x-2">
+                      <Link
+                        to={`/user-view/${item?._id}`}
+                        className="bg-blue-500 text-white px-3 py-1 text-sm rounded hover:bg-blue-600"
+                      >
+                        View
+                      </Link>
+                      <Link
+                        to={`/user-edit/${item?._id}`}
+                        className="bg-yellow-500 text-white px-3 py-1 text-sm rounded hover:bg-yellow-600"
+                      >
+                        Edit
+                      </Link>
+                      <button
+                        onClick={() => handleDelete(item?._id)}
+                        className="bg-red-500 cursor-pointer text-white px-3 py-1 text-sm rounded hover:bg-red-600"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="5" className="text-center py-4">
+                    No users
                   </td>
                 </tr>
-              ))
-            ) : (
-              <div>
-                <p className="text-center w-full text-2xl">not users</p>
-              </div>
-            )}
-
-            {/* Add more static rows as needed */}
-          </tbody>
-        </table>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

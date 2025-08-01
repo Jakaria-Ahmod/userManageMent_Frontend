@@ -13,7 +13,7 @@ const UserEdite = () => {
   useEffect(() => {
     const data = axios
       .get(
-        `https://usermanagement-backend-fdqe.onrender.com//api/v1/singleUser/${id}`
+        `https://usermanagement-backend-fdqe.onrender.com/api/v1/singleUser/${id}`
       )
       .then(res => {
         const user = res.data.user;

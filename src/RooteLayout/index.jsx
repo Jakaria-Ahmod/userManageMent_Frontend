@@ -8,7 +8,7 @@ const RooteLayout = () => {
     <div>
       <div>
         <Hedaer></Hedaer>
-        <div>
+        <div className="h-screen">
           <Outlet></Outlet>
         </div>
         <Footer></Footer>

@@ -11,23 +11,26 @@ const Register = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const newUser = {
-      name,
-      email,
-      password,
-    };
-    //
-    setName('');
-    setEmail('');
-    setPassword('');
-    toast.success('user create sucessfully');
-    //
-    const dataPush = await axios.post(
-      'https://usermanagement-backend-fdqe.onrender.com/api/v1/register',
-      newUser
-    );
-    console.log(dataPush);
-    navite('/login');
+
+    const newUser = { name, email, password };
+
+    try {
+      const dataPush = await axios.post(
+        'https://usermanagement-backend-fdqe.onrender.com/api/v1/register',
+        newUser
+      );
+      toast.success(dataPush.data.message);
+      setName('');
+      setEmail('');
+      setPassword('');
+      // navite('/login')
+    } catch (error) {
+      if (error.response?.data?.message) {
+        toast.error(error.response.data.message); // show "Email already exists"
+      } else {
+        toast.error('Something went wrong');
+      }
+    }
   };
 
   return (
